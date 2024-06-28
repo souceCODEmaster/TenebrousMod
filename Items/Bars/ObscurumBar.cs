@@ -8,7 +8,7 @@ using Terraria.GameContent;
 
 namespace TenebrousMod.Items.Bars
 {
-   
+
     public class ObscurumBar : ModItem
     {
         public override void SetStaticDefaults()

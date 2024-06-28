@@ -10,7 +10,7 @@ namespace TenebrousMod.Items.Weapons.Emberwing
 {
     public class EmberBow : ModItem
     {
-        public override void SetDefaults() 
+        public override void SetDefaults()
         {
             Item.autoReuse = true;
             Item.DamageType = DamageClass.Ranged;

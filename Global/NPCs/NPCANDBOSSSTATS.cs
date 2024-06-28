@@ -12,7 +12,7 @@ namespace TenebrousMod.Global
 
         public override void SetDefaults(NPC npc)
         {
-            
+
         }
     }
 }

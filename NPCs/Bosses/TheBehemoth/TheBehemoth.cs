@@ -51,7 +51,7 @@ namespace TenebrousMod.NPCs.Bosses.TheBehemoth
                 Music = MusicLoader.GetMusicSlot(Mod, "Assets/Music/TheBehemothTheme");
             }
         }
-       
+
         public override float SpawnChance(NPCSpawnInfo spawnInfo)
         {
             if (!NPC.AnyNPCs(ModContent.NPCType<DesertBehemoth>()) && Main.hardMode)

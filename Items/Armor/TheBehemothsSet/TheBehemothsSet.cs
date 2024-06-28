@@ -31,7 +31,7 @@ namespace TenebrousMod.Items.Armor.TheBehemothsSet
                 .AddTile(TileID.MythrilAnvil)
                 .Register();
         }
-      
+
         [AutoloadEquip(EquipType.Head)]
         public class TheBehemothsHeadgear : ModItem
         {

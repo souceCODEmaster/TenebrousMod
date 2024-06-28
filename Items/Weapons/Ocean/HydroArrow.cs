@@ -85,5 +85,5 @@ namespace TenebrousMod.Items.Weapons.Ocean
                     Projectile.frame = 0;
             }
         }
-    } 
+    }
 }

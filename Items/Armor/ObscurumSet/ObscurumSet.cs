@@ -211,13 +211,13 @@ namespace TenebrousMod.Items.Armor.ObscurumSet
                 Item.height = 28;
                 Item.value = Item.sellPrice(gold: 3);
                 Item.rare = ItemRarityID.LightPurple;
-                Item.defense = 8; 
+                Item.defense = 8;
             }
 
-               public override bool IsArmorSet(Item head, Item body, Item legs)
-              {
-                  return body.type == ModContent.ItemType<ObscurumPlate>() && legs.type == ModContent.ItemType<ObscurumGreaves>();
-               }
+            public override bool IsArmorSet(Item head, Item body, Item legs)
+            {
+                return body.type == ModContent.ItemType<ObscurumPlate>() && legs.type == ModContent.ItemType<ObscurumGreaves>();
+            }
 
             public override void UpdateArmorSet(Player player)
             {

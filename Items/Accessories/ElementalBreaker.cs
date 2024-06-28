@@ -20,7 +20,7 @@ namespace TenebrousMod.Items.Accessories
             {
                 player.AddBuff(BuffID.Swiftness, 2);
                 Item.defense = 4;
-            }     
+            }
             else
                 Item.defense = 0;
         }

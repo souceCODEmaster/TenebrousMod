@@ -8,7 +8,7 @@ using Terraria.ModLoader;
 namespace TenebrousMod.Items.TreasureBags
 {
     public class StarterBag : ModItem
-    { 
+    {
         public override void SetDefaults()
         {
             Item.width = 34;

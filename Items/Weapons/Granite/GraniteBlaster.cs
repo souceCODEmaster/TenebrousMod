@@ -26,7 +26,7 @@ namespace TenebrousMod.Items.Weapons.Granite
             Item.autoReuse = true;
             Item.shoot = ModContent.ProjectileType<GraniteOrbProj>();
             Item.shootSpeed = 16f;
-            
+
         }
 
         public override void AddRecipes()

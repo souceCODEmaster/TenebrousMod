@@ -26,8 +26,8 @@ namespace TenebrousMod.Items.Consumables
         {
             return player.ConsumedLifeCrystals == Player.LifeCrystalMax && player.ConsumedLifeFruit == Player.LifeFruitMax;
         }
-     
-       
+
+
         public override bool? UseItem(Player player)
         {
             if (player.GetModPlayer<StatPlayer>().LifeFruits >= 1)

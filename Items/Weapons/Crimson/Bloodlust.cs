@@ -41,10 +41,10 @@ namespace TenebrousMod.Items.Weapons.Crimson
         }
     }
     //public class FriendlyBloodShot : ModProjectile
-   // {
+    // {
     //    public override string Texture => ProjectileID.BloodShot;
     //    public override void SetDefaults()
-   //     {
+    //     {
     //        Projectile.width = 16;
     //        Projectile.height = 16;
     //        Projectile.friendly = true;
@@ -54,5 +54,5 @@ namespace TenebrousMod.Items.Weapons.Crimson
     //        Projectile.tileCollide = true;
     //        Projectile.ignoreWater = true;
     //    }
-   // }
+    // }
 }

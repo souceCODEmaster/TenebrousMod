@@ -6,7 +6,7 @@ namespace TenebrousMod.Items.Weapons.Granite
 {
     public class Trisma : ModItem
     {
-        public override void SetDefaults() 
+        public override void SetDefaults()
         {
             Item.autoReuse = true;
             Item.DamageType = DamageClass.Ranged;

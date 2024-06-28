@@ -44,7 +44,7 @@ namespace TenebrousMod.NPCs.Enemies.Space
             npcLoot.Add(ItemDropRule.Common(ItemID.Lens, 1));
             npcLoot.Add(ItemDropRule.Common(ItemID.BlackLens, 10));
             npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<StarEssence>(), 2, 1, 1));
-            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ElementalBreaker>(), 50, 1, 1));   
+            npcLoot.Add(ItemDropRule.Common(ModContent.ItemType<ElementalBreaker>(), 50, 1, 1));
             npcLoot.Add(ItemDropRule.Common(ItemID.Star, 1));
         }
         public override void SetBestiary(BestiaryDatabase database, BestiaryEntry bestiaryEntry)

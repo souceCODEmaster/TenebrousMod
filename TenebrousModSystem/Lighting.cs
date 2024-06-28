@@ -6,7 +6,7 @@ using Terraria.ModLoader;
 
 namespace TenebrousMod.TenebrousModSystem
 {
-    public static class WeaponLighting 
+    public static class WeaponLighting
     {
         /// <summary>
         /// LightAmount is how much light there will be.

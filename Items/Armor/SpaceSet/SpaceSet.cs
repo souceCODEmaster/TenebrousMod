@@ -269,6 +269,6 @@ namespace TenebrousMod.Items.Armor.SpaceSet
                      .AddTile(TileID.Anvils)
                      .Register();
             }
-        }   
+        }
     }
 }

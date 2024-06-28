@@ -45,10 +45,10 @@ namespace TenebrousMod.Items.Placeable
             itemLoot.Add(ItemDropRule.Common(ItemID.LifeCrystal, 4, 1, 2));
             itemLoot.Add(ItemDropRule.Common(ItemID.HealingPotion, 1, 1, 5));
             itemLoot.Add(ItemDropRule.Common(ItemID.ManaPotion, 1, 1, 5));
-            if(NPC.downedPlantBoss)
+            if (NPC.downedPlantBoss)
             {
                 itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<HydroFury>(), 2, 1, 1));
-                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<HydroArrow>(), 1, 400 ,800));
+                itemLoot.Add(ItemDropRule.Common(ModContent.ItemType<HydroArrow>(), 1, 400, 800));
             }
         }
     }

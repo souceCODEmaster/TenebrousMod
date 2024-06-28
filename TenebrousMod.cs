@@ -15,106 +15,102 @@ namespace TenebrousMod
     {
         internal Mod bossChecklist = null;
         internal static TenebrousMod Instance;
-        #region Load
         public override void Load()
         {
             Instance = this;
             bossChecklist = null;
             ModLoader.TryGetMod("BossChecklist", out bossChecklist);
         }
-        #endregion
-        #region Unload
         public override void Unload()
         {
             bossChecklist = null;
         }
-        #endregion
     }
     public class TenebrousModPlayer : ModPlayer
+    {
+        public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
         {
-            public override IEnumerable<Item> AddStartingItems(bool mediumCoreDeath)
-            {
-                yield return new Item(ModContent.ItemType<StarterBag>(), 1);
-            }
-            public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
-            {
-                bool inWater = !attempt.inLava && !attempt.inHoney;
-
-                int yourChanceDenominator = 6;
-
-                if (inWater && Main.rand.NextBool(yourChanceDenominator))
-                {
-                    itemDrop = ModContent.ItemType<WarCrate>();
-                    return;
-
-                }
-
-            }
+            yield return new Item(ModContent.ItemType<StarterBag>(), 1);
         }
-        public class ShimmerCrittersPlayer : ModPlayer
+        public override void CatchFish(FishingAttempt attempt, ref int itemDrop, ref int npcSpawn, ref AdvancedPopupRequest sonar, ref Vector2 sonarPosition)
         {
-            public bool shimmerBuff = false;
-            public override void ResetEffects()
-            {
-                shimmerBuff = false;
-            }
-            public override void GetFishingLevel(Item fishingRod, Item bait, ref float fishingLevel)
-            {
-                if (shimmerBuff)
-                    fishingLevel += 2;
-            }
-        }
-        public class StatPlayer : ModPlayer
-        {
-            public int LifeFruits;
-            public int ManaCrystals;
+            bool inWater = !attempt.inLava && !attempt.inHoney;
 
-            public override void ModifyMaxStats(out StatModifier health, out StatModifier mana)
+            int yourChanceDenominator = 6;
+
+            if (inWater && Main.rand.NextBool(yourChanceDenominator))
             {
-                health = StatModifier.Default;
-                health.Base = LifeFruits * RavagedHeart.Health;
-                mana = StatModifier.Default;
-                mana.Base = ManaCrystals * RavagedHeart.Mana;
+                itemDrop = ModContent.ItemType<WarCrate>();
+                return;
+
             }
 
-            public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
-            {
-                ModPacket packet = Mod.GetPacket();
-                packet.Write((byte)Player.whoAmI);
-                packet.Write((byte)LifeFruits);
-                packet.Write((byte)ManaCrystals);
-                packet.Send(toWho, fromWho);
-            }
-            public void ReceivePlayerSync(BinaryReader reader)
-            {
-                LifeFruits = reader.ReadByte();
-                ManaCrystals = reader.ReadByte();
-            }
-
-            public override void CopyClientState(ModPlayer targetCopy)
-            {
-                StatPlayer clone = (StatPlayer)targetCopy;
-                clone.LifeFruits = LifeFruits;
-                clone.ManaCrystals = ManaCrystals;
-            }
-
-            public override void SendClientChanges(ModPlayer clientPlayer)
-            {
-                StatPlayer clone = (StatPlayer)clientPlayer;
-
-                if (LifeFruits != clone.LifeFruits || ManaCrystals != clone.ManaCrystals)
-                    SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
-            }
-            public override void SaveData(TagCompound tag)
-            {
-                tag["RavagedHeartLife"] = LifeFruits;
-                tag["RavagedHeartMana"] = ManaCrystals;
-            }
-
-            public override void LoadData(TagCompound tag)
-            {
-                LifeFruits = tag.GetInt("RavagedHeartLife");
-                ManaCrystals = tag.GetInt("RavagedHeartMana");
-            }
         }
     }
+    public class ShimmerCrittersPlayer : ModPlayer
+    {
+        public bool shimmerBuff = false;
+        public override void ResetEffects()
+        {
+            shimmerBuff = false;
+        }
+        public override void GetFishingLevel(Item fishingRod, Item bait, ref float fishingLevel)
+        {
+            if (shimmerBuff)
+                fishingLevel += 2;
+        }
+    }
+    public class StatPlayer : ModPlayer
+    {
+        public int LifeFruits;
+        public int ManaCrystals;
+
+        public override void ModifyMaxStats(out StatModifier health, out StatModifier mana)
+        {
+            health = StatModifier.Default;
+            health.Base = LifeFruits * RavagedHeart.Health;
+            mana = StatModifier.Default;
+            mana.Base = ManaCrystals * RavagedHeart.Mana;
+        }
+
+        public override void SyncPlayer(int toWho, int fromWho, bool newPlayer)
+        {
+            ModPacket packet = Mod.GetPacket();
+            packet.Write((byte)Player.whoAmI);
+            packet.Write((byte)LifeFruits);
+            packet.Write((byte)ManaCrystals);
+            packet.Send(toWho, fromWho);
+        }
+        public void ReceivePlayerSync(BinaryReader reader)
+        {
+            LifeFruits = reader.ReadByte();
+            ManaCrystals = reader.ReadByte();
+        }
+
+        public override void CopyClientState(ModPlayer targetCopy)
+        {
+            StatPlayer clone = (StatPlayer)targetCopy;
+            clone.LifeFruits = LifeFruits;
+            clone.ManaCrystals = ManaCrystals;
+        }
+
+        public override void SendClientChanges(ModPlayer clientPlayer)
+        {
+            StatPlayer clone = (StatPlayer)clientPlayer;
+
+            if (LifeFruits != clone.LifeFruits || ManaCrystals != clone.ManaCrystals)
+                SyncPlayer(toWho: -1, fromWho: Main.myPlayer, newPlayer: false);
+        }
+        public override void SaveData(TagCompound tag)
+        {
+            tag["RavagedHeartLife"] = LifeFruits;
+            tag["RavagedHeartMana"] = ManaCrystals;
+        }
+
+        public override void LoadData(TagCompound tag)
+        {
+            LifeFruits = tag.GetInt("RavagedHeartLife");
+            ManaCrystals = tag.GetInt("RavagedHeartMana");
+        }
+    }
+}
