@@ -23,8 +23,7 @@ namespace TenebrousMod.TenebrousModSystem
         {
             try
             {
-                bossChecklistMod = ModLoader.GetMod("BossChecklist");
-                if (bossChecklistMod == null)
+                if (!ModLoader.TryGetMod("BossChecklist", out bossChecklistMod))
                     return;
 
                 RegisterBoss<TheGreatHarpy>(1.6f, () => false, new List<int> { 0 }, () => Mod.GetLocalization("Mods.TenebrousMod.BossChecklistIntegration.TheGreatHarpy.TheGreatHarpySpawnInfo"));
